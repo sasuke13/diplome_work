@@ -1,0 +1,50 @@
+<div class="w-blocks-group-wrapper blocks-group-wrapper_2QF">
+    <div id="blockId-{{ instance.id }}" data-block-name="about-3" data-block-categories="about"
+         data-test="block-wrapper" data-anchor="about"
+         class="block-wrapper w-block-wrapper block-wrapper_3Um background_3lr background w-state-has-background">
+        <section class="w-section">
+            <div class="w-section__inner">
+                <header class="w-section__header">
+                    <div class="w-grid w-grid--row w-grid--gap" data-columns-count="1">
+                        <div class="w-grid__inner">
+                            <div class="w-grid__item w-grid__item--top">
+                                <div class="w-grid__item-inner w-grid__item-panel w-text-left-xs w-text-left-sm w-text-left-md w-text-center">
+                                    <h2 class="text_1k0 ui-blockTitle w-title">{{ instance.title }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div class="w-section__content">
+                    <div class="w-grid w-grid--row w-grid--gap" data-columns-count="3">
+                        <div class="w-grid__inner">
+                            {% if instance.image1 %}
+                            <div class="w-grid__item w-grid__item--middle" data-column-size="2">
+                                <div class="w-grid__item-inner w-grid__item-panel w-text-left-xs w-text-left-sm w-text-left-md w-text-left">
+                                    <div class="w-picture-wrapper media-wrapper_3VN">
+                                        <img src="{{ instance.image1.url }}" alt="{{ instance.image1.name }}" class="w-picture__image ui-image_3aJ" style="object-fit:contain;object-position:50% 50%;">
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            <div class="w-grid__item w-grid__item--top" data-column-size="8">
+                                <div class="w-grid__item-inner w-grid__item-panel w-text-center-xs w-text-center-sm w-text-center-md w-text-center">
+                                    <p class="text_1k0 ui-text w-body">{{ instance.description|linebreaksbr }}</p>
+                                </div>
+                            </div>
+                            {% if instance.image2 %}
+                            <div class="w-grid__item w-grid__item--middle" data-column-size="2">
+                                <div class="w-grid__item-inner w-grid__item-panel w-text-left-xs w-text-left-sm w-text-left-md w-text-left">
+                                    <div class="w-picture-wrapper media-wrapper_3VN">
+                                        <img src="{{ instance.image2.url }}" alt="{{ instance.image2.name }}" class="w-picture__image ui-image_3aJ" style="object-fit:contain;object-position:50% 50%;">
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

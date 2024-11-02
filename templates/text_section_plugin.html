@@ -1,0 +1,46 @@
+{% load cms_tags %}
+<div class="w-blocks-group-wrapper blocks-group-wrapper_2QF">
+    <div class="block-wrapper w-block-wrapper block-wrapper_3Um background_3lr background w-state-has-background">
+        <section class="w-section">
+            <div class="w-section__inner">
+                {% if instance.title %}
+                    <header class="w-section__header">
+                        <div class="w-grid w-grid--row w-grid--gap" data-columns-count="1">
+                            <div class="w-grid__inner">
+                                <div class="w-grid__item w-grid__item--top">
+                                    <div class="w-grid__item-inner w-text-center-xs w-text-center-sm w-text-center-md w-text-center">
+                                        <p class="text_1k0 ui-blockTitle w-title">
+                                            <span class="w-text-block" style="display:block">
+                                                <span class="w-text-content">{{ instance.title }}</span>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                {% endif %}
+                <div class="w-section__content">
+                    <div class="w-grid w-grid--row w-grid--gap" data-columns-count="1">
+                        <div class="w-grid__inner">
+                            {% for paragraph in paragraphs %}
+                                <div class="w-grid__item w-text-center-xs w-text-center-sm w-text-center-md w-text-center">
+                                    <div class="w-grid__item-inner">
+                                        <p class="text_1k0 ui-text w-body">
+                                            <span class="w-text-block w-text-center-xs">
+                                                <span class="w-text-content">{{ paragraph.content }}</span>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% for plugin in instance.child_plugin_instances %}
+                    {% render_plugin plugin %}
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+</div>

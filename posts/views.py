@@ -2,6 +2,10 @@ from django.shortcuts import render
 from django.template import TemplateDoesNotExist
 
 
+def home(request):
+    return render(request, 'main.html')
+
+
 def dynamic_template_view(request, template_name):
     # Ensure the template exists or handle any invalid templates
     try:

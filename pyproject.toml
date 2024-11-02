@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "diplome-work"
+version = "0.1.0"
+description = ""
+authors = ["sasuke13 <bgnydyn@gmail.com>"]
+readme = "README.md"
+packages = [{include = "diplome_work"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+setuptools = "^75.2.0"
+django = "^5.1.2"
+django-cms = "^4.1.3"
+django-filer = "^3.2.3"
+djangocms-frontend = "^1.3.4"
+psycopg2 = "^2.9.10"
+python-dotenv = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

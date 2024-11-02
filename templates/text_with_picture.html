@@ -1,0 +1,54 @@
+<div class="w-blocks-group-wrapper blocks-group-wrapper_2QF">
+    <div class="block-wrapper w-block-wrapper block-wrapper_3Um background_3lr background w-state-has-background">
+        <section class="w-section">
+            <div class="w-section__inner">
+                <div class="w-section__content">
+                    <div data-columns-count="1" data-columns-inner-size="12" data-component="collection"
+                         class="collection w-a5e8f34460cd41cdfd4ef4e7d651ab43 w-grid w-grid--collection w-grid--left">
+                        <div class="w-grid__inner">
+                            <div class="w-grid__item w-grid__item--middle w-text-left-xs w-text-left-sm w-text-left-md w-text-left collection__item__sIklx">
+                                <div class="collection__item-wrapper__2kIJ5 w-grid__item-inner w-15b671aa33922489feb6830dd3d04a59 w-grid__item-panel w-mod-always-paddings collection-item-background-wrapper_3F2 w-state-has-background background w-mod-always-paddings">
+                                    <div class="collection__item-inner__3TsVi">
+                                        <div class="background-wrapper_RZ2" aria-hidden="true"
+                                             data-component="background" data-type="color">
+                                            <div class="background_2xT" style="background:#fff"
+                                                 data-role="placeholder"></div>
+                                        </div>
+                                        <div class="collection__item-inner-content__1ubIA w-apply-grid-item-paddings">
+                                            {% if instance.title %}
+                                                <p class="text_1k0 ui-blockTitle w-title">
+                                                    <span class="w-text-block" style="display:block">
+                                                        <span class="w-text-content">{{ instance.title }}</span>
+                                                    </span>
+                                                </p>
+                                            {% endif %}
+                                            {% if instance.description %}
+                                                <p class="text_1k0 ui-text w-body">
+                                                    <span class="w-text-block">
+                                                        <span class="w-text-content">{{ instance.description }}</span>
+                                                    </span>
+                                                </p>
+                                            {% endif %}
+                                        </div>
+                                        <div class="collection__item-inner-aside__2uTmt">
+                                            {% if instance.image %}
+                                                <div class="picture-wrapper__2gSTK media-wrapper_3VN">
+                                                    <picture class="picture__3tWud w-picture ui-picture_2i5">
+                                                        <img alt="Heading photo"
+                                                             class="w-picture__image ui-image_3aJ"
+                                                             style="object-fit:cover;"
+                                                             src="{{ instance.image.url }}">
+                                                    </picture>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
