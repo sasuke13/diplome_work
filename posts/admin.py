@@ -42,13 +42,13 @@ class ParagraphInline(admin.TabularInline):
 @plugin_pool.register_plugin
 class TextSectionPlugin(CMSPluginBase):
     model = TextSectionPluginModel
-    render_template = "text_section_plugin.html"
+    render_template = "plugins/text_section_plugin.html"
     name = _("Text Section")
     module = _("University Components")
     cache = False
     inlines = [ParagraphInline]
     allow_children = True
-    child_classes = ["TextPlugin", "PicturePlugin", "LinkPlugin"]
+    child_classes = ["TextPlugin", "PicturePlugin", "LinkPlugin", "TextAndPictureSection"]
 
     def render(self, context, instance, placeholder):
         context['instance'] = instance

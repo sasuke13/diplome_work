@@ -104,7 +104,7 @@ class ReviewPlugin(CMSPlugin):
 class ReviewPluginModel(CMSPluginBase):
     model = ReviewPlugin
     name = "Review Carousel"
-    render_template = "feedbacks.html"
+    render_template = "plugins/feedbacks.html"
     cache = False
 
 
@@ -114,6 +114,11 @@ class ImageCarousel(CMSPlugin):
 
 class CarouselSlide(CMSPlugin):
     photo = models.ImageField(upload_to='carousel_slides/')
+
+
+class TextBesideTheImage(CMSPlugin):
+    text = models.TextField()
+    image = models.ImageField(upload_to='pictures/')
 
 
 from cms.extensions.toolbar import ExtensionToolbar
@@ -144,7 +149,7 @@ class IconExtensionToolbar(ExtensionToolbar):
 class MyTextPlugin(CMSPluginBase):
     model = MyTextPluginModel
     name = "Text Plugin"
-    render_template = "my_text_plugin.html"
+    render_template = "plugins/my_text_plugin.html"
     module = _("University Components")
 
     def render(self, context, instance, placeholder):
@@ -157,7 +162,7 @@ class MyTextPlugin(CMSPluginBase):
 @plugin_pool.register_plugin
 class CooperationPlugin(CMSPluginBase):
     model = CooperationPluginModel
-    render_template = "text_between_2_pictures.html"
+    render_template = "plugins/text_between_2_pictures.html"
     cache = False
     name = _("Text between 2 images")
     module = _("University Components")
@@ -171,7 +176,7 @@ class CooperationPlugin(CMSPluginBase):
 @plugin_pool.register_plugin
 class ProjectSectionPlugin(CMSPluginBase):
     model = ProjectSectionPluginModel
-    render_template = "text_with_picture.html"
+    render_template = "plugins/text_with_picture.html"
     name = _("Project Section")
     module = _("University Components")
     cache = False
@@ -184,7 +189,7 @@ class ProjectSectionPlugin(CMSPluginBase):
 @plugin_pool.register_plugin
 class PicturePlugin(CMSPluginBase):
     model = PicturePluginModel
-    render_template = "picture.html"
+    render_template = "plugins/picture.html"
     name = _("Picture Section")
     module = _("University Components")
     cache = False
@@ -201,7 +206,7 @@ plugin_pool.register_plugin(ReviewPluginModel)
 class ImageCarouselSlidePlugin(CMSPluginBase):
     model = CarouselSlide
     name = _("Carousel Slide")
-    render_template = "carousel_slide.html"
+    render_template = "plugins/carousel_slide.html"
     module = _("University Components")
     cache = False
 
@@ -214,10 +219,50 @@ class ImageCarouselSlidePlugin(CMSPluginBase):
 class ImageCarouselPlugin(CMSPluginBase):
     model = ImageCarousel
     name = _("Image Carousel")
-    render_template = "photo_carousel.html"
+    render_template = "plugins/photo_carousel.html"
     module = _("University Components")
     allow_children = True
     child_classes = ["ImageCarouselSlidePlugin"]
+    cache = False
+
+    def render(self, context, instance, placeholder):
+        context['instance'] = instance
+        return context
+
+
+@plugin_pool.register_plugin
+class TextBesideThePicture(CMSPluginBase):
+    model = TextBesideTheImage
+    name = _("Text Beside The Picture")
+    render_template = "plugins/text_picture.html"
+    module = _("Text And Picture Section")
+    cache = False
+
+    def render(self, context, instance, placeholder):
+        context['instance'] = instance
+        return context
+
+
+@plugin_pool.register_plugin
+class PictureBesideTheText(CMSPluginBase):
+    model = TextBesideTheImage
+    name = _("Picture Beside The Text")
+    render_template = "plugins/picture_text.html"
+    module = _("Text And Picture Section")
+    cache = False
+
+    def render(self, context, instance, placeholder):
+        context['instance'] = instance
+        return context
+
+
+@plugin_pool.register_plugin
+class TextAndPictureSection(CMSPluginBase):
+    name = _("Text And Picture Section")
+    render_template = "plugins/content_section.html"
+    module = _("Text And Picture Section")
+    allow_children = True
+    child_classes = ["TextBesideThePicture", "PictureBesideTheText"]
     cache = False
 
     def render(self, context, instance, placeholder):

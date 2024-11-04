@@ -1,0 +1,13 @@
+{% load cms_tags %}
+<div class="w-section__content">
+    <div data-columns-count="1" data-columns-inner-size="12" data-component="collection"
+         data-collection-mode="collection"
+         class="collection w-582ebef9adf0f044a405898ed24d4809 w-grid w-grid--collection w-grid--custom-gap w-grid--left"
+         data-items-count="{{ instance.child_plugin_instances.count }}">
+        <div class="w-grid__inner">
+            {% for plugin in instance.child_plugin_instances %}
+                {% render_plugin plugin %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
