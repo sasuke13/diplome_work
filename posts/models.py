@@ -90,7 +90,7 @@ class PicturePluginModel(CMSPlugin):
 class Review(models.Model):
     full_name = models.CharField(max_length=255)
     review_text = models.TextField()
-    date = models.DateField()
+    date = models.DateField(null=True, blank=True)
     photo = models.ImageField(upload_to='reviews/')
 
     def __str__(self):
