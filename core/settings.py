@@ -122,13 +122,8 @@ THUMBNAIL_PROCESSORS = (
 )
 
 CMS_TEMPLATES = [
-    # Default template that extend base.html, to be used with Bootstrap 5
-    ('bootstrap5.html', 'Bootstrap 5 Demo'),
-
-    # a minimal template to get started with
-    ('minimal.html', 'Minimal template'),
-
-    ('whitenoise-static-files-demo.html', 'Static File Demo'),
+    ('base.html', 'Bootstrap Ukrainian Version'),
+    ('en/base.html', 'Bootstrap English Version'),
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
