@@ -98,6 +98,7 @@ class Review(models.Model):
 
 
 class ReviewPlugin(CMSPlugin):
+    title = models.TextField(blank=True, null=True)
     reviews = models.ManyToManyField(Review, related_name='review_plugins')
 
 

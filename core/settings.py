@@ -122,8 +122,8 @@ THUMBNAIL_PROCESSORS = (
 )
 
 CMS_TEMPLATES = [
-    ('base.html', 'Bootstrap Ukrainian Version'),
-    ('en/base.html', 'Bootstrap English Version'),
+    ('base.html', 'Ukrainian Version'),
+    ('en/base.html', 'English Version'),
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
