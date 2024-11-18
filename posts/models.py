@@ -126,6 +126,10 @@ class EmbeddedVideo(CMSPlugin):
     video_url = models.URLField()
 
 
+class GalleryImage(CMSPlugin):
+    image = models.ImageField(upload_to='gallery/')
+
+
 from cms.extensions.toolbar import ExtensionToolbar
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
@@ -281,6 +285,47 @@ class EmbededVideoPlugin(CMSPluginBase):
     name = _("Embeded Video Plugin")
     render_template = "plugins/embeded_video_plugin.html"
     module = _("University Components")
+    cache = False
+
+    def render(self, context, instance, placeholder):
+        context['instance'] = instance
+        return context
+
+
+@plugin_pool.register_plugin
+class GalleryContainerPlugin(CMSPluginBase):
+    name = _("Gallery Container")
+    render_template = "plugins/gallery_plugin_container.html"
+    module = _("Gallery Section")
+    allow_children = True
+    child_classes = ["GalleryElementPlugin"]
+    cache = False
+
+    def render(self, context, instance, placeholder):
+        context['instance'] = instance
+        return context
+
+
+@plugin_pool.register_plugin
+class GalleryElementPlugin(CMSPluginBase):
+    name = _("Gallery Element")
+    render_template = "plugins/gallery_plugin_element.html"
+    module = _("Gallery Section")
+    allow_children = True
+    child_classes = ["GalleryImagePlugin"]
+    cache = False
+
+    def render(self, context, instance, placeholder):
+        context['instance'] = instance
+        return context
+
+
+@plugin_pool.register_plugin
+class GalleryImagePlugin(CMSPluginBase):
+    model = GalleryImage
+    name = _("Gallery Image")
+    render_template = "plugins/gallery_image_plugin.html"
+    module = _("Gallery Section")
     cache = False
 
     def render(self, context, instance, placeholder):

@@ -21,4 +21,4 @@ def english_dynamic_template_view(request, template_name):
     try:
         return render(request, f'en/{template_name}.html')
     except TemplateDoesNotExist:
-        return render(request, '404.html')
+        return render(request, 'en/404.html')

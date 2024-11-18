@@ -1,0 +1,32 @@
+{% load cms_tags %}
+
+<div class="w-blocks-group-wrapper blocks-group-wrapper_2QF">
+    <div id="blockId-6490b757778d76000eee059f" data-block-name="blank-custom-block-columns"
+         data-block-categories="other" data-test="block-wrapper" data-anchor="gallery-2"
+         class="block-wrapper w-block-wrapper block-wrapper_3Um background_3lr background w-state-has-background">
+        <div style="display:none" id="gallery-2"></div>
+        <div class="w-block-background background-wrapper_RZ2" aria-hidden="true" data-background--hide="false"
+             data-component="background" data-type="color" data-data-loaded="true">
+            <div class="background_2xT" style="background:#fff" data-role="placeholder"></div>
+        </div>
+        <section class="w-section">
+            <div class="w-section__inner">
+                <div class="w-section__content">
+                    <div class="w-grid w-grid--row w-grid--gap" data-columns-count="3">
+                        <div class="w-grid__inner">
+
+                            <div class="album">
+                                <div class="responsive-container-block bg">
+                                    {% for plugin in instance.child_plugin_instances %}
+                                            {% render_plugin plugin %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

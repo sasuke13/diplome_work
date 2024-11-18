@@ -12532,6 +12532,7 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="{% static 'styles/gallery_plugin.css' %}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet"
@@ -12692,8 +12693,9 @@
                                                                         aria-haspopup="false"
                                                                         href="{% url 'english_dynamic_template_view' template_name='year2023' %}">2023</a></span>
                                                                 </li>
-                                                                {% for child in children %}
+                                                                {% for child in children|dictsort:"title" %}
                                                                     {% if 'english_version' in child.get_absolute_url %}
+                                                                    {% if 'gallery' not in child.get_absolute_url %}
                                                                         <li class="menu__item_1eM menu__item--light_UNr w-nav__item"
                                                                             data-menuitem="true"><span
                                                                                 class="menu__item-wrapper_YJs"
@@ -12704,19 +12706,44 @@
                                                                                 href="{{ child.get_absolute_url }}">{{ child.get_menu_title }}</a></span>
                                                                         </li>
                                                                     {% endif %}
+                                                                    {% endif %}
                                                                 {% endfor %}
                                                             </ul>
                                                         </div>
                                                     </li>
-                                                    <li class="menu__item_1eM menu__item--light_UNr w-nav__item"
+                                                    <li class="menu__item_1eM menu__item--light_UNr w-nav__item menu__item--submenu_2Ot w-nav__item--submenu"
                                                         data-menuitem="true"><span
                                                             class="menu__item-wrapper_YJs"
-                                                            data-state="closed"><a
-                                                            page="[object Object]"
-                                                            class="menu__link_2K2 w-nav__link"
-                                                            aria-haspopup="false"
-                                                            href="{% url 'english_dynamic_template_view' template_name='gallery' %}">Gallery</a></span>
+                                                            data-state="closed"><span
+                                                            class="menu__link_2K2 w-nav__link menu__link--empty_1P1">Galleries</span><button
+                                                            type="button" class="menu__item-triangle_22k"
+                                                            data-submenu="menu__item-triangle--opened_1xk"><svg
+                                                            class="menu__item-triangle-ico_1My"
+                                                            viewBox="0 0 8 5"
+                                                            xmlns="http://www.w3.org/2000/svg"><path
+                                                            d="M4 5l4-5H0z"></path></svg></button></span>
+                                                        <div class="submenu_1jR" data-submenu-dropdown="true"
+                                                             style="left:0">
+                                                            <ul class="submenu-wrapper_1UU">
+                                                                {% for child in children|dictsort:"title" %}
+                                                                    {% if 'english_version' in child.get_absolute_url %}
+                                                                        {% if 'gallery' in child.get_absolute_url %}
+                                                                            <li class="menu__item_1eM menu__item--light_UNr w-nav__item"
+                                                                                data-menuitem="true"><span
+                                                                                    class="menu__item-wrapper_YJs"
+                                                                                    data-state="closed"><a
+                                                                                    page="[object Object]"
+                                                                                    class="menu__link_2K2 w-nav__link submenu__link"
+                                                                                    aria-haspopup="false"
+                                                                                    href="{{ child.get_absolute_url }}">{{ child.get_menu_title }}</a></span>
+                                                                            </li>
+                                                                        {% endif %}
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </div>
                                                     </li>
+
                                                     <li class="menu__item_1eM menu__item--light_UNr w-nav__item"
                                                         data-menuitem="true"><span
                                                             class="menu__item-wrapper_YJs"
@@ -13026,29 +13053,57 @@
                                                         aria-haspopup="false"
                                                         href="{% url 'english_dynamic_template_view' template_name='year2023' %}">2023</a></span>
                                                 </li>
-                                                {% for child in children %}
+                                                {% for child in children|dictsort:"title" %}
                                                     {% if 'english_version' in child.get_absolute_url %}
-                                                        <li class="menu__item_1eM menu__item--light_UNr w-nav__item"
-                                                            data-menuitem="true"><span
-                                                                class="menu__item-wrapper_YJs"
-                                                                data-state="closed"><a
-                                                                page="[object Object]"
-                                                                class="menu__link_2K2 w-nav__link submenu__link"
-                                                                aria-haspopup="false"
-                                                                href="{{ child.get_absolute_url }}">{{ child.get_menu_title }}</a></span>
-                                                        </li>
+                                                        {% if 'gallery' not in child.get_absolute_url %}
+                                                            <li class="menu__item_1eM menu__item--light_UNr w-nav__item"
+                                                                data-menuitem="true"><span
+                                                                    class="menu__item-wrapper_YJs"
+                                                                    data-state="closed"><a
+                                                                    page="[object Object]"
+                                                                    class="menu__link_2K2 w-nav__link submenu__link"
+                                                                    aria-haspopup="false"
+                                                                    href="{{ child.get_absolute_url }}">{{ child.get_menu_title }}</a></span>
+                                                            </li>
+                                                        {% endif %}
                                                     {% endif %}
                                                 {% endfor %}
                                             </ul>
                                         </div>
                                     </li>
-                                    <li class="menu__item_1eM menu__item--light_UNr w-nav__item"
-                                        data-menuitem="true"><span class="menu__item-wrapper_YJs"
-                                                                   data-state="closed"><a page="[object Object]"
-                                                                                          class="menu__link_2K2 w-nav__link"
-                                                                                          aria-haspopup="false"
-                                                                                          href="{% url 'english_dynamic_template_view' template_name='gallery' %}">Gallery</a></span>
+                                    <li class="menu__item_1eM menu__item--light_UNr w-nav__item menu__item--submenu_2Ot w-nav__item--submenu"
+                                        data-menuitem="true"><span
+                                            class="menu__item-wrapper_YJs"
+                                            data-state="closed"><span
+                                            class="menu__link_2K2 w-nav__link menu__link--empty_1P1">Galleries</span><button
+                                            type="button" class="menu__item-triangle_22k"
+                                            data-submenu="menu__item-triangle--opened_1xk"><svg
+                                            class="menu__item-triangle-ico_1My"
+                                            viewBox="0 0 8 5"
+                                            xmlns="http://www.w3.org/2000/svg"><path
+                                            d="M4 5l4-5H0z"></path></svg></button></span>
+                                        <div class="submenu_1jR" data-submenu-dropdown="true"
+                                             style="left:0">
+                                            <ul class="submenu-wrapper_1UU">
+                                                {% for child in children|dictsort:"title" %}
+                                                    {% if 'english_version' in child.get_absolute_url %}
+                                                        {% if 'gallery' in child.get_absolute_url %}
+                                                            <li class="menu__item_1eM menu__item--light_UNr w-nav__item"
+                                                                data-menuitem="true"><span
+                                                                    class="menu__item-wrapper_YJs"
+                                                                    data-state="closed"><a
+                                                                    page="[object Object]"
+                                                                    class="menu__link_2K2 w-nav__link submenu__link"
+                                                                    aria-haspopup="false"
+                                                                    href="{{ child.get_absolute_url }}">{{ child.get_menu_title }}</a></span>
+                                                            </li>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
                                     </li>
+
                                     <li class="menu__item_1eM menu__item--light_UNr w-nav__item"
                                         data-menuitem="true"><span class="menu__item-wrapper_YJs"
                                                                    data-state="closed"><a page="[object Object]"

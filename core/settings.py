@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-jr)vo)jg7v^p-22-+c%djtgfj4_h1pv6vez0ui*#p2$ias4fh@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -125,6 +125,8 @@ THUMBNAIL_PROCESSORS = (
 CMS_TEMPLATES = [
     ('base.html', 'Ukrainian Version'),
     ('en/base.html', 'English Version'),
+    ('gallery.html', 'Gallery 2023'),
+    ('en/gallery.html', 'Gallery 2023 English Version'),
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
@@ -188,7 +190,7 @@ STATICFILES_DIRS = [
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/emtcnltueduua/public_html/media'
+MEDIA_ROOT = 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
