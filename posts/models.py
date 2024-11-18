@@ -122,6 +122,10 @@ class TextBesideTheImage(CMSPlugin):
     image = models.ImageField(upload_to='pictures/')
 
 
+class EmbeddedVideo(CMSPlugin):
+    video_url = models.URLField()
+
+
 from cms.extensions.toolbar import ExtensionToolbar
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
@@ -264,6 +268,19 @@ class TextAndPictureSection(CMSPluginBase):
     module = _("Text And Picture Section")
     allow_children = True
     child_classes = ["TextBesideThePicture", "PictureBesideTheText"]
+    cache = False
+
+    def render(self, context, instance, placeholder):
+        context['instance'] = instance
+        return context
+
+
+@plugin_pool.register_plugin
+class EmbededVideoPlugin(CMSPluginBase):
+    model = EmbeddedVideo
+    name = _("Embeded Video Plugin")
+    render_template = "plugins/embeded_video_plugin.html"
+    module = _("University Components")
     cache = False
 
     def render(self, context, instance, placeholder):
