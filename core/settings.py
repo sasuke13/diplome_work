@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-jr)vo)jg7v^p-22-+c%djtgfj4_h1pv6vez0ui*#p2$ias4fh@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -131,6 +131,8 @@ CMS_TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -181,7 +183,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-STATIC_ROOT = "/home/emtcnltueduua/public_html/static"
+STATIC_ROOT = "/static"
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
@@ -190,7 +192,7 @@ STATICFILES_DIRS = [
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/emtcnltueduua/public_html/media'
+MEDIA_ROOT = 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

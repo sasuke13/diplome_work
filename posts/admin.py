@@ -5,13 +5,6 @@ from django.utils.translation import gettext_lazy as _
 
 from posts.models import Paragraph, TextSectionPluginModel, ReviewPlugin, Review
 
-
-# Carousel
-
-
-# Carousel
-
-
 # Feedbacks
 
 class ReviewInline(admin.TabularInline):
@@ -48,7 +41,14 @@ class TextSectionPlugin(CMSPluginBase):
     cache = False
     inlines = [ParagraphInline]
     allow_children = True
-    child_classes = ["TextPlugin", "PicturePlugin", "LinkPlugin", "TextAndPictureSection"]
+    child_classes = [
+        "TextPlugin",
+        "PicturePlugin",
+        "LinkPlugin",
+        "TextAndPictureSection",
+        "EmbededVideoPlugin",
+        "LinkPlugin"
+    ]
 
     def render(self, context, instance, placeholder):
         context['instance'] = instance

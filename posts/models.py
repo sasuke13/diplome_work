@@ -9,6 +9,8 @@ from django.templatetags.static import static
 from django.utils.translation import gettext_lazy as _
 from filer.fields.image import FilerImageField
 
+from django.contrib import admin
+
 
 class PostContentExtension(PageExtension):
     post_content = models.TextField()
@@ -128,6 +130,36 @@ class EmbeddedVideo(CMSPlugin):
 
 class GalleryImage(CMSPlugin):
     image = models.ImageField(upload_to='gallery/')
+
+
+class LinkItem(models.Model):
+    """Model for individual link items"""
+    plugin = models.ForeignKey('Link', related_name='link_items', on_delete=models.CASCADE, null=True, blank=True)
+    text = models.CharField(_("Link Text"), max_length=255)
+    url = models.URLField(_("URL"))
+    order = models.PositiveIntegerField(_("Order"), default=0)
+    
+    class Meta:
+        ordering = ['order']
+    
+    def __str__(self):
+        return self.text
+
+
+class Link(CMSPlugin):
+    """Plugin model for a collection of links"""
+
+    def copy_relations(self, oldinstance):
+        """Needed to copy relations when copying plugin"""
+        for link in oldinstance.link_items.all():
+            link.pk = None
+            link.plugin = self
+            link.save()
+
+
+class LinkItemInline(admin.StackedInline):
+    model = LinkItem
+    extra = 1
 
 
 from cms.extensions.toolbar import ExtensionToolbar
@@ -327,6 +359,20 @@ class GalleryImagePlugin(CMSPluginBase):
     render_template = "plugins/gallery_image_plugin.html"
     module = _("Gallery Section")
     cache = False
+
+    def render(self, context, instance, placeholder):
+        context['instance'] = instance
+        return context
+
+
+@plugin_pool.register_plugin
+class LinkPlugin(CMSPluginBase):
+    model = Link
+    name = _("Links Collection")
+    render_template = "plugins/link.html"
+    module = _("University Components")
+    cache = False
+    inlines = [LinkItemInline]
 
     def render(self, context, instance, placeholder):
         context['instance'] = instance

@@ -1,0 +1,56 @@
+ <div class="w-blocks-group-wrapper blocks-group-wrapper_2QF">
+            <div id="blockId-649d9f43db3755000fd858da" data-block-name="Custom block" data-block-categories="custom"
+                 data-test="block-wrapper" data-anchor="en"
+                 class="block-wrapper w-block-wrapper block-wrapper_3Um background_3lr background w-state-has-background">
+                <div style="display:none" id="en"></div>
+                <div class="w-block-background background-wrapper_RZ2" aria-hidden="true" data-background--hide="false"
+                     data-component="background" data-type="color" data-data-loaded="true">
+                    <div class="background_2xT" style="background:#fff" data-role="placeholder"></div>
+                </div>
+                <section class="w-section" style="padding-bottom: 0px !important;">
+                        <div class="w-section__content">
+                            <div class="w-grid w-grid--row w-grid--gap" data-columns-count="1">
+                                <div class="w-grid__inner">
+                                    <div class="w-grid__item w-grid__item--middle">
+                                        <div class="w-grid__item-inner w-grid__item-panel w-text-center-xs w-text-center-sm w-text-center-md w-text-center w-088754deb0dd8820b733e12d9894218e">
+                                            <nav class="w-nav w-nav--constructor w-nav--column">
+                                                <ul class="menu_1QC menu--649d9f43db3755000fd858da--3b61b08b-1629-4f1d-8587-6d6ba48b1f32 w-nav__list menu-with-presets_vQ_ menu-with-presets--vertical_1eG w-nav__list--column"
+                                                    data-component="menu">
+                                                    {% for link in instance.link_items.all %}
+                                                    <li class="menu__item_1eM w-nav__item" data-menuitem="true"><span
+                                                            class="menu__item-wrapper_YJs" data-state="closed"><a
+                                                            class="menu__link_2K2 w-nav__link" aria-haspopup="false"
+                                                            data-component="hash-link"
+                                                            href="{{ link.url }}" 
+                                                            target="_blank" 
+                                                            rel="noopener noreferrer">{{ link.text }}</a></span>
+                                                    </li>
+                                                    {% endfor %}
+                                                    <style>
+                                                        .menu--649d9f43db3755000fd858da--3b61b08b-1629-4f1d-8587-6d6ba48b1f32 .menu__item_1eM:not(.submenu__link) {
+                                                            font-size: 20px;
+                                                        }
+
+                                                        .menu--649d9f43db3755000fd858da--3b61b08b-1629-4f1d-8587-6d6ba48b1f32 .menu__link_2K2:not(.submenu__link) {
+                                                            white-space: normal;
+                                                            text-decoration: underline;
+                                                        }
+
+                                                        .menu--649d9f43db3755000fd858da--3b61b08b-1629-4f1d-8587-6d6ba48b1f32 .menu__link_2K2:not(.submenu__link):not(:hover), .menu--649d9f43db3755000fd858da--3b61b08b-1629-4f1d-8587-6d6ba48b1f32 .menu__link_2K2:not(.submenu__link):not(:hover) + .menu__item-triangle_22k, .menu--649d9f43db3755000fd858da--3b61b08b-1629-4f1d-8587-6d6ba48b1f32 .menu__link_2K2.submenu__link:not(:hover) {
+                                                            color: #ba9126;
+                                                        }
+
+                                                        .menu--649d9f43db3755000fd858da--3b61b08b-1629-4f1d-8587-6d6ba48b1f32 .menu__link_2K2:not(.submenu__link):hover, .menu--649d9f43db3755000fd858da--3b61b08b-1629-4f1d-8587-6d6ba48b1f32 .menu__link_2K2:not(.submenu__link):hover + .menu__item-triangle_22k, .menu--649d9f43db3755000fd858da--3b61b08b-1629-4f1d-8587-6d6ba48b1f32 .menu__link_2K2.submenu__link:hover {
+                                                            color: #515c6d;
+                                                        }</style>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
