@@ -131,8 +131,6 @@ CMS_TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -183,7 +181,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-STATIC_ROOT = "/static"
+STATIC_ROOT = "/home/emtcnltueduua/public_html/static"
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [

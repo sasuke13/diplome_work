@@ -1,4 +1,4 @@
-<!DOCTYPE html> {% load cms_tags menu_tags sekizai_tags static i18n cache %}{% spaceless %}{% show_menu %}
+<!DOCTYPE html> {% load cms_tags menu_tags sekizai_tags static i18n cache language_tags %}{% spaceless %}{% show_menu %}
     <html lang="{{ LANGUAGE_CODE }}">
     <head>
     <style>
@@ -12783,7 +12783,7 @@
                                                         data-component="languageItem">
                                                         <li class="language__item_2A9 w-horizontal-flow language__item">
                                                             <div class="language__icon_3mZ w-icon"><a
-                                                                    href="http://emtc.great-site.net/"><span
+                                                                    href="{% change_language_url %}"><span
                                                                     class="iconElement_3D2 ui-icon_2oI w-icon ui-icon--light_HAb"><span
                                                                     class="iconElement__inner_2iN"><svg
                                                                     xmlns="http://www.w3.org/2000/svg"
@@ -12845,7 +12845,7 @@
                                                         data-component="languageItem">
                                                         <li class="language__item_2A9 w-horizontal-flow language__item">
                                                             <div class="language__icon_3mZ w-icon"><a
-                                                                    href="{% url 'en_home' %}"><span
+                                                                    href="{% change_language_url %}"><span
                                                                     class="iconElement_3D2 ui-icon_2oI w-icon"><span
                                                                     class="iconElement__inner_2iN"><svg
                                                                     xmlns="http://www.w3.org/2000/svg"
@@ -13108,7 +13108,7 @@
                                         style="background-color:#fff" data-component="languageItem">
                                         <li class="language__item_2A9 w-horizontal-flow language__item">
                                             <div class="language__icon_3mZ w-icon"><a
-                                                    href="http://emtc.great-site.net/"><span
+                                                    href="{% change_language_url %}"><span
                                                     class="iconElement_3D2 ui-icon_2oI w-icon ui-icon--light_HAb"><span
                                                     class="iconElement__inner_2iN"><svg
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -13160,7 +13160,7 @@
                                         style="background-color:#fff" data-component="languageItem">
                                         <li class="language__item_2A9 w-horizontal-flow language__item">
                                             <div class="language__icon_3mZ w-icon"><a
-                                                    href="http://emtc.great-site.net/"><span
+                                                    href="{% change_language_url %}"><span
                                                     class="iconElement_3D2 ui-icon_2oI w-icon"><span
                                                     class="iconElement__inner_2iN"><svg
                                                     xmlns="http://www.w3.org/2000/svg"
