@@ -15,7 +15,7 @@ def change_language_url(context):
         if 'english_version_2024' in path:
             return path.replace('english_version_2024/', '')
 
-        if '/en/' in path:
+        elif '/en/' in path:
             return path.replace('/en/', '/')
 
         elif 'english_version_' in path:
@@ -23,9 +23,12 @@ def change_language_url(context):
 
         else:
             parts = path.split('/')
-
+            print(parts)
             if 'cms' in path:
-                parts[-2] = 'english_version_' + parts[-2]
+                if 'cms' in parts and len(parts) == 3:
+                    parts[-1] = 'english_version_2024'
+                else:
+                    parts[-2] = 'english_version_' + parts[-2]
 
             else:
                 parts.insert(1, 'en')
