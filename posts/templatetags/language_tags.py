@@ -1,7 +1,7 @@
 from django import template
-from django.urls import resolve
 
 register = template.Library()
+
 
 @register.simple_tag(takes_context=True)
 def change_language_url(context):
@@ -10,23 +10,31 @@ def change_language_url(context):
     by adding/removing 'EN' from the path
     """
     try:
-        # Get current path
         path = context['request'].path
-        
-        # If we're on an English page (has 'EN' in path)
+
+        if 'english_version_2024' in path:
+            return path.replace('english_version_2024/', '')
+
         if '/en/' in path:
             return path.replace('/en/', '/')
-        
-        # If we're on a Ukrainian page (no 'EN' in path)
+
+        elif 'english_version_' in path:
+            return path.replace('english_version_', '')
+
         else:
-            # Split the path and insert 'EN'
             parts = path.split('/')
-            # Insert 'EN' after the first slash
-            parts.insert(1, 'en')
+
+            if 'cms' in path:
+                parts[-2] = 'english_version_' + parts[-2]
+
+            else:
+                parts.insert(1, 'en')
+
             return '/'.join(parts)
             
     except Exception:
         return '/'
+
 
 @register.simple_tag(takes_context=True)
 def change_language_url_lowercase(context):
@@ -51,4 +59,4 @@ def change_language_url_lowercase(context):
             return '/'.join(parts)
             
     except Exception:
-        return '/' 
+        return '/'
